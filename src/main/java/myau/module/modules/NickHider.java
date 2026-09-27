@@ -10,12 +10,12 @@ import java.util.regex.Matcher;
 
 public class NickHider extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
-    public final TextProperty protectName = new TextProperty("保护名称", "Myau User");
+    public final TextProperty protectName = new TextProperty("name", "保护名称", "Myau User");
     public final BooleanProperty scoreboard = new BooleanProperty("计分板", true);
     public final BooleanProperty level = new BooleanProperty("等级", true);
 
     public NickHider() {
-        super("NickHider", false, true);
+        super("编辑昵称", false, true);
     }
 
     public String replaceNick(String input) {

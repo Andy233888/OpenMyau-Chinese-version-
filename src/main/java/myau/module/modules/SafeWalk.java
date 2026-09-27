@@ -19,7 +19,7 @@ public class SafeWalk extends Module {
     public final FloatProperty speedMotion = new FloatProperty("速度移动速度", 1.0F, 0.5F, 1.5F);
     public final BooleanProperty air = new BooleanProperty("空中", false);
     public final BooleanProperty directionCheck = new BooleanProperty("方向检查", true);
-    public final BooleanProperty pitCheck = new BooleanProperty("俯仰检查", true);
+    public final BooleanProperty pitCheck = new BooleanProperty("pitch-check", "俯仰检查", true);
     public final BooleanProperty requirePress = new BooleanProperty("需要按下", false);
     public final BooleanProperty blocksOnly = new BooleanProperty("仅在块上", true);
 

@@ -20,17 +20,17 @@ import java.util.stream.Collectors;
 
 public class Radar extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
-    public final ModeProperty colorMode = new ModeProperty("颜色模式", 0, new String[]{"DEFAULT", "TEAMS", "HUD"});
+    public final ModeProperty colorMode = new ModeProperty("color", "颜色模式", 0, new String[]{"DEFAULT", "TEAMS", "HUD"});
     public final IntProperty position = new IntProperty("位置", 0, 0, 4);
     public final IntProperty offsetX = new IntProperty("偏移X", 60, 0, 1000, () -> position.getValue() != 4);
     public final IntProperty offsetY = new IntProperty("偏移Y", 60, 0, 1000, () -> position.getValue() != 4);
     public final IntProperty radarRadius = new IntProperty("雷达径向", 55, 10, 200);
     public final FloatProperty dotRadius = new FloatProperty("点径向", 1.5F, 0.1F, 5.0F);
-    public final BooleanProperty showPlayers = new BooleanProperty("玩家", true);
-    public final BooleanProperty showFriends = new BooleanProperty("好友", true);
-    public final BooleanProperty showEnemies = new BooleanProperty("敌人", true);
-    public final BooleanProperty showBots = new BooleanProperty("机器人", false);
-    public final BooleanProperty showPVP = new BooleanProperty("PVP", false);
+    public final BooleanProperty showPlayers = new BooleanProperty("players", "玩家", true);
+    public final BooleanProperty showFriends = new BooleanProperty("friends", "好友", true);
+    public final BooleanProperty showEnemies = new BooleanProperty("enemies", "敌人", true);
+    public final BooleanProperty showBots = new BooleanProperty("bots", "机器人", false);
+    public final BooleanProperty showPVP = new BooleanProperty("show-pvp", "显示PVP", false);
     public final ColorProperty fillColor = new ColorProperty("填充颜色", Color.GRAY.getRGB());
     public final ColorProperty outlineColor = new ColorProperty("轮廓颜色", Color.DARK_GRAY.getRGB());
     public final ColorProperty crossColor = new ColorProperty("十字颜色", Color.LIGHT_GRAY.getRGB());
