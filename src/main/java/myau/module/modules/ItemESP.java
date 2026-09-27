@@ -34,7 +34,7 @@ public class ItemESP extends Module {
     public final BooleanProperty autoScale = new BooleanProperty("自动缩放", true);
     public final BooleanProperty emeralds = new BooleanProperty("绿宝石", true);
     public final BooleanProperty diamonds = new BooleanProperty("钻石", true);
-    public final BooleanProperty goldd = new BooleanProperty("金锭", true);
+    public final BooleanProperty goldd = new BooleanProperty("gold", "金锭", true);
     public final BooleanProperty iron = new BooleanProperty("铁", true);
 
     private boolean shouldHighlightItem(int itemId) {

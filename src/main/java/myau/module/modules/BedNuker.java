@@ -72,11 +72,11 @@ public class BedNuker extends Module {
     public final ModeProperty mode = new ModeProperty("模式", 0, new String[]{"LEGIT", "SWAP"});
     public final FloatProperty range = new FloatProperty("范围", 4.5F, 3.0F, 6.0F);
     public final PercentProperty speed = new PercentProperty("速度", 0);
-    public final BooleanProperty groundSpeed = new BooleanProperty("地面速度", false);
+    public final BooleanProperty groundSpeed = new BooleanProperty("ground-spoof", "地面速度", false);
     public final ModeProperty ignoreVelocity = new ModeProperty("忽略击退", 0, new String[]{"NONE", "CANCEL", "DELAY"});
     public final BooleanProperty surroundings = new BooleanProperty("环境", true);
     public final BooleanProperty toolCheck = new BooleanProperty("工具检查", true);
-    public final BooleanProperty whiteList = new BooleanProperty("白名单", true);
+    public final BooleanProperty whiteList = new BooleanProperty("whitelist", "白名单", true);
     public final BooleanProperty swing = new BooleanProperty("挖掘动画", true);
     public final ModeProperty moveFix = new ModeProperty("移动修复", 1, new String[]{"NONE", "SILENT", "STRICT"});
     public final ModeProperty showTarget = new ModeProperty("显示目标床", 1, new String[]{"NONE", "DEFAULT", "HUD"});

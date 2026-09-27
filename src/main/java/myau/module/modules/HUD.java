@@ -29,27 +29,27 @@ public class HUD extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
     private List<Module> activeModules = new ArrayList<>();
     public final ModeProperty colorMode = new ModeProperty(
-            "颜色模式", 3, new String[]{"RAINBOW", "CHROMA", "ASTOLFO", "CUSTOM1", "CUSTOM12", "CUSTOM123"}
+            "color", "颜色模式", 3, new String[]{"RAINBOW", "CHROMA", "ASTOLFO", "CUSTOM1", "CUSTOM12", "CUSTOM123"}
     );
     public final FloatProperty colorSpeed = new FloatProperty("颜色速度", 1.0F, 0.5F, 1.5F);
     public final PercentProperty colorSaturation = new PercentProperty("颜色饱和度", 50);
     public final PercentProperty colorBrightness = new PercentProperty("颜色亮度", 100);
-    public final ColorProperty custom1 = new ColorProperty("自定义颜色1", Color.WHITE.getRGB(), () -> this.colorMode.getValue() == 3 || this.colorMode.getValue() == 4 || this.colorMode.getValue() == 5);
-    public final ColorProperty custom2 = new ColorProperty("自定义颜色2", Color.WHITE.getRGB(), () -> this.colorMode.getValue() == 4 || this.colorMode.getValue() == 5);
-    public final ColorProperty custom3 = new ColorProperty("custom-color-3", Color.WHITE.getRGB(), () -> this.colorMode.getValue() == 5);
-    public final ModeProperty posX = new ModeProperty("位置-X", 0, new String[]{"LEFT", "RIGHT"});
-    public final ModeProperty posY = new ModeProperty("位置-Y", 0, new String[]{"TOP", "BOTTOM"});
+    public final ColorProperty custom1 = new ColorProperty("custom-color-1", "自定义颜色1", Color.WHITE.getRGB(), () -> this.colorMode.getValue() == 3 || this.colorMode.getValue() == 4 || this.colorMode.getValue() == 5);
+    public final ColorProperty custom2 = new ColorProperty("custom-color-2", "自定义颜色2", Color.WHITE.getRGB(), () -> this.colorMode.getValue() == 4 || this.colorMode.getValue() == 5);
+    public final ColorProperty custom3 = new ColorProperty("custom-color-3", "自定义颜色3", Color.WHITE.getRGB(), () -> this.colorMode.getValue() == 5);
+    public final ModeProperty posX = new ModeProperty("position-x", "位置-X", 0, new String[]{"LEFT", "RIGHT"});
+    public final ModeProperty posY = new ModeProperty("position-y", "位置-Y", 0, new String[]{"TOP", "BOTTOM"});
     public final IntProperty offsetX = new IntProperty("偏移-X", 2, 0, 255);
     public final IntProperty offsetY = new IntProperty("偏移-Y", 2, 0, 255);
     public final FloatProperty scale = new FloatProperty("缩放", 1.0F, 0.5F, 1.5F);
     public final PercentProperty background = new PercentProperty("背景透明度", 25);
-    public final BooleanProperty showBar = new BooleanProperty("显示进度条", true);
+    public final BooleanProperty showBar = new BooleanProperty("bar", "显示进度条", true);
     public final BooleanProperty shadow = new BooleanProperty("阴影", true);
     public final BooleanProperty suffixes = new BooleanProperty("后缀", true);
     public final BooleanProperty lowerCase = new BooleanProperty("小写", false);
     public final BooleanProperty chatOutline = new BooleanProperty("聊天框轮廓", true);
     public final BooleanProperty blinkTimer = new BooleanProperty("闪烁定时器", true);
-    public final BooleanProperty toggleSound = new BooleanProperty("切换音效", true);
+    public final BooleanProperty toggleSound = new BooleanProperty("toggle-sounds", "切换音效", true);
     public final BooleanProperty toggleAlerts = new BooleanProperty("切换提示", false);
 
     private String getModuleName(Module module) {

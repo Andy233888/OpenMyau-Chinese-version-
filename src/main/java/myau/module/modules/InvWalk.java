@@ -51,10 +51,10 @@ public class InvWalk extends Module {
     }};
 
     public final ModeProperty mode = new ModeProperty("模式", 1, new String[]{"VANILLA", "LEGIT", "HYPIXEL", "LEGIT+"});
-    public final BooleanProperty guiEnabled = new BooleanProperty("click-gui", true);
+    public final BooleanProperty guiEnabled = new BooleanProperty("click-gui", "允许GUI", true);
     public final IntProperty openDelay = new IntProperty("打开延迟", 0, 0, 20, () -> mode.getValue() == 3);
     public final IntProperty closeDelay = new IntProperty("关闭延迟", 4, 0, 20, () -> mode.getValue() == 3);
-    public final BooleanProperty lockMoveKey = new BooleanProperty("锁定移动键", false);
+    public final BooleanProperty lockMoveKey = new BooleanProperty("lock-move-dey", "锁定移动键", false);
 
     public InvWalk() {
         super("打开物品栏时行走", false);
