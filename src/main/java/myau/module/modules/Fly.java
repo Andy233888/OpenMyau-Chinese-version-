@@ -13,8 +13,8 @@ import net.minecraft.client.Minecraft;
 public class Fly extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
     private double verticalMotion = 0.0;
-    public final FloatProperty hSpeed = new FloatProperty("水平速度", 1.0F, 0.0F, 100.0F);
-    public final FloatProperty vSpeed = new FloatProperty("垂直速度", 1.0F, 0.0F, 100.0F);
+    public final FloatProperty hSpeed = new FloatProperty("horizontal-speed", "水平速度", 1.0F, 0.0F, 100.0F);
+    public final FloatProperty vSpeed = new FloatProperty("vertical-speed", "垂直速度", 1.0F, 0.0F, 100.0F);
 
     public Fly() {
         super("飞行", false);

@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class GhostHand extends Module {
-    public final BooleanProperty teamsOnly = new BooleanProperty("仅在团队", true);
+    public final BooleanProperty teamsOnly = new BooleanProperty("team-only", "仅在团队", true);
     public final BooleanProperty ignoreWeapons = new BooleanProperty("忽略武器", false);
 
     public GhostHand() {

@@ -18,9 +18,9 @@ public class AutoTool extends Module {
     private int currentToolSlot = -1;
     private int previousSlot = -1;
     private int tickDelayCounter = 0;
-    public final IntProperty switchDelay = new IntProperty("切换延迟", 0, 0, 5);
+    public final IntProperty switchDelay = new IntProperty("delay", "切换延迟", 0, 0, 5);
     public final BooleanProperty switchBack = new BooleanProperty("切换回工具", true);
-    public final BooleanProperty sneakOnly = new BooleanProperty(" 仅潜行", true);
+    public final BooleanProperty sneakOnly = new BooleanProperty("仅潜行", true);
 
     public AutoTool() {
         super("自动工具切换", false);

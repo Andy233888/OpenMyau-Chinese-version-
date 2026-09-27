@@ -23,15 +23,15 @@ import java.util.stream.Collectors;
 public class AimAssist extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
     private final TimerUtil timer = new TimerUtil();
-    public final FloatProperty hSpeed = new FloatProperty("水平速度", 3.0F, 0.0F, 10.0F);
-    public final FloatProperty vSpeed = new FloatProperty("垂直速度", 0.0F, 0.0F, 10.0F);
+    public final FloatProperty hSpeed = new FloatProperty("horizontal-speed", "水平速度", 3.0F, 0.0F, 10.0F);
+    public final FloatProperty vSpeed = new FloatProperty("vertical-speed", "垂直速度", 0.0F, 0.0F, 10.0F);
     public final PercentProperty smoothing = new PercentProperty("平滑度", 50);
     public final FloatProperty range = new FloatProperty("范围", 4.5F, 3.0F, 8.0F);
     public final IntProperty fov = new IntProperty("视野", 90, 30, 360);
-    public final BooleanProperty weaponOnly = new BooleanProperty("武器仅使用", true);
+    public final BooleanProperty weaponOnly = new BooleanProperty("weapons-only", "武器仅使用", true);
     public final BooleanProperty allowTools = new BooleanProperty("允许工具使用", false, this.weaponOnly::getValue);
-    public final BooleanProperty botChecks = new BooleanProperty("检查机器人", true);
-    public final BooleanProperty team = new BooleanProperty("团队", true);
+    public final BooleanProperty botChecks = new BooleanProperty("bot-check", "检查机器人", true);
+    public final BooleanProperty team = new BooleanProperty("teams", "团队", true);
 
     private boolean isValidTarget(EntityPlayer entityPlayer) {
         if (entityPlayer != mc.thePlayer && entityPlayer != mc.thePlayer.ridingEntity) {

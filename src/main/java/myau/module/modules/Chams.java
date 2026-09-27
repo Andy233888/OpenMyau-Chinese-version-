@@ -21,12 +21,12 @@ public class Chams extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
     public final BooleanProperty players = new BooleanProperty("玩家", true);
     public final BooleanProperty friends = new BooleanProperty("好友", true);
-    public final BooleanProperty enemiess = new BooleanProperty("敌人", true);
-    public final BooleanProperty bosses = new BooleanProperty("boss", false);
+    public final BooleanProperty enemiess = new BooleanProperty("enemies", "敌人", true);
+    public final BooleanProperty bosses = new BooleanProperty("bosses", "Boss", false);
     public final BooleanProperty mobs = new BooleanProperty("怪物", false);
-    public final BooleanProperty creepers = new BooleanProperty(" creep", false);
-    public final BooleanProperty enderman = new BooleanProperty("ender人", false);
-    public final BooleanProperty blaze = new BooleanProperty("火焰", false);
+    public final BooleanProperty creepers = new BooleanProperty("creepers", "爬行者", false);
+    public final BooleanProperty enderman = new BooleanProperty("endermen", "末影人", false);
+    public final BooleanProperty blaze = new BooleanProperty("blazes", "火焰", false);
     public final BooleanProperty animals = new BooleanProperty("动物", false);
     public final BooleanProperty self = new BooleanProperty("自己", false);
     public final BooleanProperty bots = new BooleanProperty("机器人", false);

@@ -26,7 +26,7 @@ public class Eagle extends Module {
     public final BooleanProperty jumpCheck = new BooleanProperty("跳跃检查", true);
     public final BooleanProperty pitchCheck = new BooleanProperty("俯仰检查", true);
     public final BooleanProperty blocksOnly = new BooleanProperty("仅在块上", true);
-    public final BooleanProperty sneakOnly = new BooleanProperty("仅在潜行时", false);
+    public final BooleanProperty sneakOnly = new BooleanProperty("sneaking-only", "仅在潜行时", false);
 
     private boolean canMoveSafely() {
         double[] offset = MoveUtil.predictMovement();

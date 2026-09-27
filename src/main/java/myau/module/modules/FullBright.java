@@ -17,6 +17,7 @@ public class FullBright extends Module {
 
     public FullBright() {
         super("全亮", true, true);
+        setConfigName("Fullbright");
     }
 
     @EventTarget

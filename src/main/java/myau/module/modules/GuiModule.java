@@ -11,6 +11,7 @@ public class GuiModule extends Module {
 
     public GuiModule() {
         super("ClickGui", false);
+        setConfigName("ClickGui");
         setKey(Keyboard.KEY_RSHIFT);
     }
 

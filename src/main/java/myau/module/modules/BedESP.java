@@ -61,10 +61,10 @@ public class BedESP extends Module {
 
     public BedESP() {
         super("显示床", false);
-        this.customColor = new ColorProperty("custom-color", (int) 8085714755840333141L, () -> this.color.getValue() == 0);
-        this.opacity = new PercentProperty("opacity", 25);
-        this.outline = new BooleanProperty("outline", false);
-        this.obsidian = new BooleanProperty("obsidian", true);
+        this.customColor = new ColorProperty("custom-color", "自定义颜色", (int) 8085714755840333141L, () -> this.color.getValue() == 0);
+        this.opacity = new PercentProperty("opacity", "透明度", 25);
+        this.outline = new BooleanProperty("outline", "轮廓", false);
+        this.obsidian = new BooleanProperty("obsidian", "黑曜石", true);
     }
 
     public double getHeight() {

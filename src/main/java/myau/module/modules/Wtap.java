@@ -32,6 +32,7 @@ public class Wtap extends Module {
 
     public Wtap() {
         super("WTap", false);
+        setConfigName("WTap");
     }
 
     @EventTarget(Priority.LOWEST)
