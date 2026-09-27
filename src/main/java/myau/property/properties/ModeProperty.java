@@ -17,6 +17,17 @@ public class ModeProperty extends Property<Integer> {
         this.modes = modes;
     }
 
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public ModeProperty(String configName, String name, Integer value, String[] modes) {
+        this(configName, name, value, modes, null);
+    }
+
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public ModeProperty(String configName, String name, Integer value, String[] modes, BooleanSupplier check) {
+        super(configName, name, value, check);
+        this.modes = modes;
+    }
+
     @Override
     public String getValuePrompt() {
         return String.join(", ", this.modes);
@@ -46,12 +57,12 @@ public class ModeProperty extends Property<Integer> {
 
     @Override
     public boolean read(JsonObject jsonObject) {
-        return this.parseString(jsonObject.get(this.getName()).getAsString());
+        return this.parseString(jsonObject.get(this.effectiveKey(jsonObject)).getAsString());
     }
 
     @Override
     public void write(JsonObject jsonObject) {
-        jsonObject.addProperty(this.getName(), this.getModeString());
+        jsonObject.addProperty(this.getConfigName(), this.getModeString());
     }
 
     public void nextMode() {

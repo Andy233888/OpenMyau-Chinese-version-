@@ -39,6 +39,28 @@ public class Myau {
         this.init();
     }
 
+    /** 将 Java 字段名转换为连字符小写英文键（正确处理 CPS、PVP 等缩写）：autoBlockMinCPS -> auto-block-min-cps */
+    static String kebabCase(String fieldName) {
+        StringBuilder sb = new StringBuilder();
+        int length = fieldName.length();
+        for (int i = 0; i < length; i++) {
+            char c = fieldName.charAt(i);
+            if (Character.isUpperCase(c)) {
+                if (i != 0) {
+                    char prev = fieldName.charAt(i - 1);
+                    char next = (i + 1 < length) ? fieldName.charAt(i + 1) : 0;
+                    if (Character.isLowerCase(prev) || (Character.isUpperCase(prev) && Character.isLowerCase(next))) {
+                        sb.append('-');
+                    }
+                }
+                sb.append(Character.toLowerCase(c));
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
     public void init() {
         rotationManager = new RotationManager();
         floatManager = new FloatManager();
@@ -151,8 +173,13 @@ public class Myau {
                     throw new RuntimeException(e);
                 }
                 if (obj instanceof Property<?>) {
-                    ((Property<?>) obj).setOwner(module);
-                    properties.add((Property<?>) obj);
+                    Property<?> property = (Property<?>) obj;
+                    // 配置键采用与语言无关的英文键：优先显式设置，否则由字段名自动派生
+                    if (property.getConfigName().equals(property.getName())) {
+                        property.setConfigName(kebabCase(field.getName()));
+                    }
+                    property.setOwner(module);
+                    properties.add(property);
                 }
             }
             propertyManager.properties.put(module.getClass(), properties);

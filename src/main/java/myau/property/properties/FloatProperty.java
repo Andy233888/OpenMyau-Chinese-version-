@@ -19,6 +19,18 @@ public class FloatProperty extends Property<Float> {
         this.maximum = maximum;
     }
 
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public FloatProperty(String configName, String name, Float value, Float minimum, Float maximum) {
+        this(configName, name, value, minimum, maximum, null);
+    }
+
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public FloatProperty(String configName, String name, Float value, Float minimum, Float maximum, BooleanSupplier check) {
+        super(configName, name, value, floatV -> floatV >= 0 && floatV <= Float.MAX_VALUE, check);
+        this.minimum = minimum;
+        this.maximum = maximum;
+    }
+
     @Override
     public String getValuePrompt() {
         return String.format("%s-%s", this.minimum, this.maximum);
@@ -36,12 +48,12 @@ public class FloatProperty extends Property<Float> {
 
     @Override
     public boolean read(JsonObject jsonObject) {
-        return this.setValue(jsonObject.get(this.getName()).getAsNumber().floatValue());
+        return this.setValue(jsonObject.get(this.effectiveKey(jsonObject)).getAsNumber().floatValue());
     }
 
     @Override
     public void write(JsonObject jsonObject) {
-        jsonObject.addProperty(this.getName(), this.getValue());
+        jsonObject.addProperty(this.getConfigName(), this.getValue());
     }
 
     public Float getMinimum() {

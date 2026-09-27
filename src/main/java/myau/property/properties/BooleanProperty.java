@@ -14,6 +14,16 @@ public class BooleanProperty extends Property<Boolean> {
         super(name, value, booleanSupplier);
     }
 
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public BooleanProperty(String configName, String name, Boolean value) {
+        this(configName, name, value, null);
+    }
+
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public BooleanProperty(String configName, String name, Boolean value, BooleanSupplier booleanSupplier) {
+        super(configName, name, value, booleanSupplier);
+    }
+
     @Override
     public String getValuePrompt() {
         return "true/false";
@@ -37,11 +47,11 @@ public class BooleanProperty extends Property<Boolean> {
 
     @Override
     public boolean read(JsonObject jsonObject) {
-        return this.setValue(jsonObject.get(this.getName()).getAsBoolean());
+        return this.setValue(jsonObject.get(this.effectiveKey(jsonObject)).getAsBoolean());
     }
 
     @Override
     public void write(JsonObject jsonObject) {
-        jsonObject.addProperty(this.getName(), this.getValue());
+        jsonObject.addProperty(this.getConfigName(), this.getValue());
     }
 }

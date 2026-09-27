@@ -23,6 +23,18 @@ public class PercentProperty extends Property<Integer> {
         this.maximum = maximum;
     }
 
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public PercentProperty(String configName, String name, Integer value) {
+        this(configName, name, value, 0, 100, null);
+    }
+
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public PercentProperty(String configName, String name, Integer value, Integer minimum, Integer maximum, BooleanSupplier booleanSupplier) {
+        super(configName, name, value, value1 -> value1 >= minimum && value1 <= maximum, booleanSupplier);
+        this.minimum = minimum;
+        this.maximum = maximum;
+    }
+
     @Override
     public String getValuePrompt() {
         return String.format("%d-%d%%", this.minimum, this.maximum);
@@ -40,12 +52,12 @@ public class PercentProperty extends Property<Integer> {
 
     @Override
     public boolean read(JsonObject jsonObject) {
-        return this.setValue(jsonObject.get(this.getName()).getAsNumber().intValue());
+        return this.setValue(jsonObject.get(this.effectiveKey(jsonObject)).getAsNumber().intValue());
     }
 
     @Override
     public void write(JsonObject jsonObject) {
-        jsonObject.addProperty(this.getName(), this.getValue());
+        jsonObject.addProperty(this.getConfigName(), this.getValue());
     }
 
     public Integer getMaximum() {

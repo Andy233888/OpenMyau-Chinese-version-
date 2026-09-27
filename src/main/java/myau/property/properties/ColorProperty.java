@@ -14,6 +14,11 @@ public class ColorProperty extends Property<Integer> {
         super(string, color, rgb -> rgb <= 16777215, check);
     }
 
+    /** configName 用于配置文件（英文键），name 用于 UI 显示 */
+    public ColorProperty(String configName, String name, Integer color, BooleanSupplier check) {
+        super(configName, name, color, rgb -> rgb <= 16777215, check);
+    }
+
     @Override
     public String getValuePrompt() {
         return "RGB";
@@ -32,11 +37,11 @@ public class ColorProperty extends Property<Integer> {
 
     @Override
     public boolean read(JsonObject jsonObject) {
-        return this.parseString(jsonObject.get(this.getName()).getAsString().substring(0,6));
+        return this.parseString(jsonObject.get(this.effectiveKey(jsonObject)).getAsString().substring(0,6));
     }
 
     @Override
     public void write(JsonObject jsonObject) {
-        jsonObject.addProperty(this.getName(), String.format("%06X", this.getValue()));
+        jsonObject.addProperty(this.getConfigName(), String.format("%06X", this.getValue()));
     }
 }

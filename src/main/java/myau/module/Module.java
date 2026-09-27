@@ -12,6 +12,8 @@ public abstract class Module {
     protected boolean enabled;
     protected int key;
     protected boolean hidden;
+    /** 语言无关的英文配置键（用于配置文件）；为 null 时回退到类名 */
+    private String configName;
 
     public Module(String name, boolean enabled) {
         this(name, enabled, false);
@@ -26,6 +28,15 @@ public abstract class Module {
 
     public String getName() {
         return this.name;
+    }
+
+    /** 语言无关的英文配置键，用于配置文件；未显式设置时回退到类名 */
+    public String getConfigName() {
+        return this.configName != null ? this.configName : this.getClass().getSimpleName();
+    }
+
+    public void setConfigName(String configName) {
+        this.configName = configName;
     }
 
     public String formatModule() {

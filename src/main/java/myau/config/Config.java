@@ -53,18 +53,21 @@ public class Config {
 
             JsonObject jsonObject = parsed.getAsJsonObject();
             for (Module module : Myau.moduleManager.modules.values()) {
-                JsonElement moduleObj = jsonObject.get(module.getName());
+                JsonElement moduleObj = jsonObject.get(module.getConfigName());
+                if ((moduleObj == null || !moduleObj.isJsonObject()) && !module.getConfigName().equals(module.getName())) {
+                    moduleObj = jsonObject.get(module.getName());
+                }
                 if (moduleObj != null && moduleObj.isJsonObject()) {
                     JsonObject object = moduleObj.getAsJsonObject();
 
                     ArrayList<Property<?>> list = Myau.propertyManager.properties.get(module.getClass());
                     if (list != null) {
                         for (Property<?> property : list) {
-                            if (object.has(property.getName())) {
+                            if (property.hasKey(object)) {
                                 try {
                                     property.read(object);
                                 } catch (Exception e) {
-                                    ((IAccessorMinecraft) mc).getLogger().warn(String.format("Failed to load property %s for module %s", property.getName(), module.getName()));
+                                    ((IAccessorMinecraft) mc).getLogger().warn(String.format("Failed to load property %s for module %s", property.getConfigName(), module.getConfigName()));
                                 }
                             }
                         }
@@ -92,15 +95,15 @@ public class Config {
                     }
                 }
             }
-            ChatUtil.sendFormatted(String.format("%sConfig has been loaded (&a&o%s&r)&r", Myau.clientName, file.getName()));
+            ChatUtil.sendFormatted(String.format("%s配置已加载 (&a&o%s&r)&r", Myau.clientName, file.getName()));
         } catch (FileNotFoundException e) {
-            ChatUtil.sendFormatted(String.format("%sConfig file not found (&c&o%s&r)&r", Myau.clientName, file.getName()));
+            ChatUtil.sendFormatted(String.format("%s没有找到配置文件 (&c&o%s&r)&r", Myau.clientName, file.getName()));
         } catch (JsonSyntaxException e) {
-            ChatUtil.sendFormatted(String.format("%sConfig has invalid JSON syntax (&c&o%s&r)&r", Myau.clientName, file.getName()));
-            ((IAccessorMinecraft) mc).getLogger().error("JSON Syntax Error: " + e.getMessage());
+            ChatUtil.sendFormatted(String.format("%s配置存在无效的JSON语法 (&c&o%s&r)&r", Myau.clientName, file.getName()));
+            ((IAccessorMinecraft) mc).getLogger().error("JSON语法错误: " + e.getMessage());
         } catch (Exception e) {
-            ((IAccessorMinecraft) mc).getLogger().error("Error loading config: " + e.getMessage());
-            ChatUtil.sendFormatted(String.format("%sConfig couldn't be loaded (&c&o%s&r)&r", Myau.clientName, file.getName()));
+            ((IAccessorMinecraft) mc).getLogger().error("加载配置出错: " + e.getMessage());
+            ChatUtil.sendFormatted(String.format("%s无法加载配置 (&c&o%s&r)&r", Myau.clientName, file.getName()));
         }
     }
 
@@ -123,11 +126,11 @@ public class Config {
                         try {
                             property.write(moduleObject);
                         } catch (Exception e) {
-                            ((IAccessorMinecraft) mc).getLogger().warn(String.format("Failed to save property %s for module %s", property.getName(), module.getName()));
+                            ((IAccessorMinecraft) mc).getLogger().warn(String.format("Failed to save property %s for module %s", property.getConfigName(), module.getConfigName()));
                         }
                     }
                 }
-                object.add(module.getName(), moduleObject);
+                object.add(module.getConfigName(), moduleObject);
             }
 
             PrintWriter printWriter = new PrintWriter(new FileWriter(file));
