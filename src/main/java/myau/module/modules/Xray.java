@@ -38,9 +38,9 @@ public class Xray extends Module {
     public final PercentProperty opacity = new PercentProperty("透明度", 50);
     public final IntProperty range = new IntProperty("范围", 64, 16, 512);
     public final BooleanProperty cavesOnly = new BooleanProperty("仅洞穴", true);
-    public final IntProperty caveRadius = new IntProperty("洞穴半径", 2, 1, 2);
+    public final IntProperty caveRadius = new IntProperty("caves-radius", "洞穴半径", 2, 1, 2);
     public final BooleanProperty diamonds = new BooleanProperty("钻石", true);
-    public final BooleanProperty diamondTracers = new BooleanProperty("钻石轨迹线", true);
+    public final BooleanProperty diamondTracers = new BooleanProperty("diamonds-tracers", "钻石轨迹线", true);
     public final BooleanProperty gold = new BooleanProperty("黄金", true);
     public final BooleanProperty goldTracers = new BooleanProperty("黄金轨迹线", true);
     public final BooleanProperty iron = new BooleanProperty("铁", false);
@@ -48,13 +48,13 @@ public class Xray extends Module {
     public final BooleanProperty coal = new BooleanProperty("煤", false);
     public final BooleanProperty coalTracers = new BooleanProperty("煤矿、轨迹线", false);
     public final BooleanProperty redstone = new BooleanProperty("红石块", false);
-    public final BooleanProperty redStoneTracers = new BooleanProperty("红石块轨迹线", false);
+    public final BooleanProperty redStoneTracers = new BooleanProperty("redstone-tracers", "红石块轨迹线", false);
     public final BooleanProperty lapis = new BooleanProperty("蓝宝石", false);
     public final BooleanProperty lapisTracers = new BooleanProperty("蓝宝石轨迹线", false);
     public final BooleanProperty emeralds = new BooleanProperty("钻石", false);
     public final BooleanProperty emeraldsTracers = new BooleanProperty("钻石轨迹线", false);
     public final BooleanProperty spawners = new BooleanProperty("刷怪笼", false);
-    public final BooleanProperty spawnerTracers = new BooleanProperty("刷怪笼轨迹线", false);
+    public final BooleanProperty spawnerTracers = new BooleanProperty("spawners-tracers", "刷怪笼轨迹线", false);
     public final BooleanProperty canes = new BooleanProperty("甘蔗", false);
     public final BooleanProperty canesTracers = new BooleanProperty("甘蔗轨迹线", false);
     public final BooleanProperty warts = new BooleanProperty("地狱疣", false);

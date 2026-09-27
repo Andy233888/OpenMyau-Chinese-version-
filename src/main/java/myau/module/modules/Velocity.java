@@ -24,6 +24,9 @@ import net.minecraft.potion.Potion;
 public class Velocity extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
 
+    public static boolean stoppedBlock = false;
+    public static boolean extraAttacked = false;
+
     private int chanceCounter = 0;
     private int delayChanceCounter = 0;
     private boolean pendingExplosion = false;
@@ -36,13 +39,14 @@ public class Velocity extends Module {
     private int jumpCooldown = 0;
 
     public final ModeProperty mode = new ModeProperty("模式", 0, new String[]{"VANILLA", "JUMP", "DELAY", "REVERSE", "LEGIT_TEST"});
+    public final ModeProperty reduceMode = new ModeProperty("减少模式", 0, new String[]{"NONE", "FAST", "STRICT"});
     public final IntProperty delayTicks = new IntProperty("延迟时间", 3, 1, 20, () -> this.mode.getValue() == 2);
     public final PercentProperty delayChance = new PercentProperty("延迟概率", 100, () -> this.mode.getValue() == 2);
     public final PercentProperty chance = new PercentProperty("触发概率", 100);
     public final PercentProperty horizontal = new PercentProperty("水平速度", 0);
     public final PercentProperty vertical = new PercentProperty("垂直速度", 100);
-    public final PercentProperty explosionHorizontal = new PercentProperty("爆炸水平速度", 100);
-    public final PercentProperty explosionVertical = new PercentProperty("爆炸垂直速度", 100);
+    public final PercentProperty explosionHorizontal = new PercentProperty("explosions-horizontal", "爆炸水平速度", 100);
+    public final PercentProperty explosionVertical = new PercentProperty("explosions-vertical", "爆炸垂直速度", 100);
     public final BooleanProperty fakeCheck = new BooleanProperty("假检查", true);
     public final BooleanProperty debugLog = new BooleanProperty("调试日志", false);
 
@@ -233,6 +237,8 @@ public class Velocity extends Module {
         this.allowNext = true;
         this.shouldJump = false;
         this.jumpCooldown = 0;
+        Velocity.stoppedBlock = false;
+        Velocity.extraAttacked = false;
     }
 
     @Override
