@@ -45,18 +45,18 @@ public class TargetHUD extends Module {
     private float newHealth = 0.0F;
     private float maxHealth = 0.0F;
     public final ModeProperty color = new ModeProperty("颜色", 0, new String[]{"DEFAULT", "HUD"});
-    public final ModeProperty posX = new ModeProperty("位置X", 1, new String[]{"LEFT", "MIDDLE", "RIGHT"});
-    public final ModeProperty posY = new ModeProperty("位置Y", 1, new String[]{"TOP", "MIDDLE", "BOTTOM"});
+    public final ModeProperty posX = new ModeProperty("position-x", "位置X", 1, new String[]{"LEFT", "MIDDLE", "RIGHT"});
+    public final ModeProperty posY = new ModeProperty("position-y", "位置Y", 1, new String[]{"TOP", "MIDDLE", "BOTTOM"});
     public final FloatProperty scale = new FloatProperty("缩放", 1.0F, 0.5F, 1.5F);
-    public final IntProperty offX = new IntProperty("偏移X", 0, -255, 255);
-    public final IntProperty offY = new IntProperty("偏移Y", 40, -255, 255);
+    public final IntProperty offX = new IntProperty("offset-x", "偏移X", 0, -255, 255);
+    public final IntProperty offY = new IntProperty("offset-y", "偏移Y", 40, -255, 255);
     public final PercentProperty background = new PercentProperty("背景", 25);
     public final BooleanProperty head = new BooleanProperty("头", true);
     public final BooleanProperty indicator = new BooleanProperty("指示器", true);
     public final BooleanProperty outline = new BooleanProperty("轮廓", false);
     public final BooleanProperty animations = new BooleanProperty("动画", true);
     public final BooleanProperty shadow = new BooleanProperty("阴影", true);
-    public final BooleanProperty kaOnly = new BooleanProperty("仅在击杀时显示", true);
+    public final BooleanProperty kaOnly = new BooleanProperty("ka-only", "仅在击杀时显示", true);
     public final BooleanProperty chatPreview = new BooleanProperty("聊天预览", false);
 
     private EntityLivingBase resolveTarget() {

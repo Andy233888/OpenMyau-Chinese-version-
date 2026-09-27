@@ -26,15 +26,15 @@ import java.util.stream.Collectors;
 
 public class Tracers extends Module {
     private static final Minecraft mc = Minecraft.getMinecraft();
-    public final ModeProperty colorMode = new ModeProperty("颜色模式", 0, new String[]{"DEFAULT", "TEAMS", "HUD"});
-    public final BooleanProperty drawLines = new BooleanProperty("绘制线段", true);
-    public final BooleanProperty drawArrows = new BooleanProperty("绘制箭头", false);
+    public final ModeProperty colorMode = new ModeProperty("color", "颜色模式", 0, new String[]{"DEFAULT", "TEAMS", "HUD"});
+    public final BooleanProperty drawLines = new BooleanProperty("lines", "绘制线段", true);
+    public final BooleanProperty drawArrows = new BooleanProperty("arrows", "绘制箭头", false);
     public final PercentProperty opacity = new PercentProperty("透明度", 100);
     public final IntProperty distance = new IntProperty("距离", 512, 0, 512);
-    public final BooleanProperty showPlayers = new BooleanProperty("玩家", true);
-    public final BooleanProperty showFriends = new BooleanProperty("好友", true);
-    public final BooleanProperty showEnemies = new BooleanProperty("敌人", true);
-    public final BooleanProperty showBots = new BooleanProperty("机器人", false);
+    public final BooleanProperty showPlayers = new BooleanProperty("players", "玩家", true);
+    public final BooleanProperty showFriends = new BooleanProperty("friends", "好友", true);
+    public final BooleanProperty showEnemies = new BooleanProperty("enemies", "敌人", true);
+    public final BooleanProperty showBots = new BooleanProperty("bots", "机器人", false);
 
     private boolean shouldRender(EntityPlayer entityPlayer) {
         if (entityPlayer.deathTime > 0) {
